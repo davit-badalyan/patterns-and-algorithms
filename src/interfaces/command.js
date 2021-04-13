@@ -1,9 +1,9 @@
-export class Strategy {
+export class Command {
   constructor() {
     //
   }
 
-  doAlgorithm() {
+  execute() {
     //
   }
 }

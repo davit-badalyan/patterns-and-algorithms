@@ -3,7 +3,13 @@ export class Subject {
     //
   }
 
-  attach() {}
-  detach() {}
-  notify() {}
+  attach() {
+    //
+  }
+  detach() {
+    //
+  }
+  notify() {
+    //
+  }
 }

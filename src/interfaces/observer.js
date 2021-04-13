@@ -1,5 +1,9 @@
 export class Observer {
-  constructor() {}
+  constructor() {
+    //
+  }
 
-  update(subject) {}
+  update(subject) {
+    //
+  }
 }
