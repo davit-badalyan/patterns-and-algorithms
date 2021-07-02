@@ -1,6 +1,9 @@
 import { Context } from "./classes/context";
+import { Facade } from "./classes/facade";
+import { FirstSubsystem } from "./classes/first-subsystem";
 import { Invoker } from "./classes/invoker";
 import { Receiver } from "./classes/receiver";
+import { SecondSubsystem } from "./classes/second-subsystem";
 import { ComplexCommand } from "./commands/complex-command";
 import { SimpleCommand } from "./commands/simple-command";
 import { FirstObserver } from "./observers/first-observer";
@@ -11,7 +14,7 @@ import { MultiplyStrategy } from "./strategies/multiply-strategy";
 import { SubtractStrategy } from "./strategies/subtract-strategy";
 import { ConcreteSubject } from "./subjects/concrete-subject";
 
-const pattern = "command";
+const pattern = "facade";
 switch (pattern) {
   case "command":
     doCommand();
@@ -25,6 +28,9 @@ switch (pattern) {
   case "singleton":
     doSingleton();
     break;
+  case "facade":
+    doFacade();
+    break;
   default:
     break;
 }
@@ -34,7 +40,9 @@ function doCommand() {
   const receiver = new Receiver();
 
   invoker.setOnStart(new SimpleCommand("Say Hi!"));
-  invoker.setOnFinish(new ComplexCommand(receiver, "Send Email", "Save Report"));
+  invoker.setOnFinish(
+    new ComplexCommand(receiver, "Send Email", "Save Report")
+  );
 
   invoker.doSomethingImportant();
 }
@@ -76,4 +84,12 @@ function doObserver() {
 function doSingleton() {
   const instance = singleton;
   instance.doSomeLogic();
+}
+
+function doFacade() {
+  const firstSubsystem = new FirstSubsystem();
+  const secondSubsystem = new SecondSubsystem();
+  const facade = new Facade(firstSubsystem, secondSubsystem);
+
+  console.log(facade.operation());
 }
