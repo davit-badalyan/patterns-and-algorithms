@@ -1,11 +1,12 @@
 import { Context } from "./classes/context";
 import { Facade } from "./classes/facade";
-import { FirstSubsystem } from "./classes/first-subsystem";
 import { Invoker } from "./classes/invoker";
 import { Receiver } from "./classes/receiver";
-import { SecondSubsystem } from "./classes/second-subsystem";
 import { ComplexCommand } from "./commands/complex-command";
 import { SimpleCommand } from "./commands/simple-command";
+import { FirstComponent } from "./components/first-component";
+import { SecondComponent } from "./components/second-component";
+import { ConcreteMediator } from "./mediators/concrete-mediator";
 import { FirstObserver } from "./observers/first-observer";
 import { SecondObserver } from "./observers/second-observer";
 import { singleton } from "./singletons/singleton";
@@ -13,8 +14,10 @@ import { AddStrategy } from "./strategies/add-strategy";
 import { MultiplyStrategy } from "./strategies/multiply-strategy";
 import { SubtractStrategy } from "./strategies/subtract-strategy";
 import { ConcreteSubject } from "./subjects/concrete-subject";
+import { FirstSubsystem } from "./subsystems/first-subsystem";
+import { SecondSubsystem } from "./subsystems/second-subsystem";
 
-const pattern = "facade";
+const pattern = "mediator";
 switch (pattern) {
   case "command":
     doCommand();
@@ -30,6 +33,9 @@ switch (pattern) {
     break;
   case "facade":
     doFacade();
+    break;
+  case "mediator":
+    doMediator();
     break;
   default:
     break;
@@ -92,4 +98,17 @@ function doFacade() {
   const facade = new Facade(firstSubsystem, secondSubsystem);
 
   console.log(facade.operation());
+}
+
+function doMediator() {
+  const firstComponent = new FirstComponent();
+  const secondComponent = new SecondComponent();
+  const mediator = new ConcreteMediator(firstComponent, secondComponent);
+
+  console.log("Client triggers operation A.");
+  firstComponent.doA();
+
+  console.log("\n");
+  console.log("Client triggers operation D.");
+  secondComponent.doD();
 }

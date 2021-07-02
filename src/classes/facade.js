@@ -1,5 +1,5 @@
-import { FirstSubsystem } from "./first-subsystem";
-import { SecondSubsystem } from "./second-subsystem";
+import { FirstSubsystem } from "../subsystems/first-subsystem";
+import { SecondSubsystem } from "../subsystems/second-subsystem";
 
 export class Facade {
   constructor(firstSubsystem = null, secondSubsystem = null) {
