@@ -29,7 +29,7 @@ export class ConcreteSubject extends Subject {
     }
 
     console.log("Subject: Detached an observer.");
-    this._observers.slice(observerIndex, 1);
+    this._observers.splice(observerIndex, 1);
   }
 
   notify() {

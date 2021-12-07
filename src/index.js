@@ -17,7 +17,8 @@ import { ConcreteSubject } from "./subjects/concrete-subject";
 import { FirstSubsystem } from "./subsystems/first-subsystem";
 import { SecondSubsystem } from "./subsystems/second-subsystem";
 
-const pattern = "mediator";
+const pattern = "observer";
+
 switch (pattern) {
   case "command":
     doCommand();
