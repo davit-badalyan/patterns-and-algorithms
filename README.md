@@ -1,1 +1,1 @@
-# Design patterns trainings
+# Design patterns and algorithms trainings
